@@ -1,10 +1,10 @@
-unit Unit1;
+unit UnitUser;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ActnList, Menus, ComCtrls, Unit2, ToolWin,
+  Dialogs, StdCtrls, ExtCtrls, ActnList, Menus, ComCtrls, UnitModelUser, ToolWin,
   sSkinManager, sGauge, sGroupBox, sCheckBox, sLabel, acProgressBar,
   sToolBar, sPanel, acPageScroller, acAlphaHints, Mask, sMaskEdit,
   sCustomComboEdit, sComboEdit, sMemo;

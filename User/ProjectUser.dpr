@@ -2,8 +2,8 @@ program ProjectUser;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1},
-  Unit2 in 'Unit2.pas';
+  UnitUser in 'UnitUser.pas' {Form1},
+  UnitModelUser in 'UnitModelUser.pas';
 
 {$R *.res}
 

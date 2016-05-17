@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Unit2, ExtCtrls, ComCtrls, sSkinManager, Buttons,
+  Dialogs, StdCtrls, UnitModelAdmin, ExtCtrls, ComCtrls, sSkinManager, Buttons,
   sGauge, sButton, sCheckBox, sPanel, acSlider, acMeter, OleCtrls, SHDocVw,
   acWebBrowser, sScrollBar;
 
