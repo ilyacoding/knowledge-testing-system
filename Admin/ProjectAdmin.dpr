@@ -1,4 +1,4 @@
-program ProjectAdm;
+program ProjectAdmin;
 
 uses
   Forms,

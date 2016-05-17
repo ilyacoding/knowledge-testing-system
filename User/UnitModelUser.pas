@@ -1,4 +1,4 @@
-unit Unit2;
+unit UnitModelUser;
 
 interface
 
@@ -44,8 +44,8 @@ function GetMark(CurrQuest: TQuest): integer;
 function GetCurrMark(CurrQuest: TQuest): integer;
 function GetTOQ(CurrQuest: TQuest): string;
 function GetOptInfo(CurrOpt: TOpt): string;
-function GetOptAnswer(CurrOpt: TOpt): boolean;
 function GetQuestHash(FirstQuest: TQuest): integer;
+function SaveTest(FQuest: TQuest): string;
 function GetTitle(CurrQuest: TQuest): string;
 function GetTime(CurrQuest: TQuest): integer;
 function IsSolved(CurrQuest: TQuest): boolean;
@@ -58,8 +58,6 @@ procedure AddQuest(var FQuest: TQuest; Title: string; Mark: integer; TOQ: string
 procedure FillFirstOption(FQuest: TQuest);
 procedure AddOption(CurrQuest: TQuest; Info: string; Answer: boolean);
 procedure DeleteQuest(CurrQuest: TQuest);
-procedure ClearOptions(var CurrQuest: TQuest);
-function GetQP(const FQuest, CurrQuest: TQuest): integer;
 
 implementation
 
@@ -140,11 +138,6 @@ end;
 function GetUserAnswers(CurrQuest: TQuest): string;
 begin
   result := CurrQuest^.Answers;
-end;
-
-function GetOptAnswer(CurrOpt: TOpt): boolean;
-begin
-  result := CurrOpt^.Answer;
 end;
 
 function OpenTest(testFile: string): TQuest;
@@ -232,21 +225,6 @@ begin
   begin
     CurrQuest := CurrQuest^.NextQuest;
     result := result + 1;
-  end;
-end;
-
-function GetQP(const FQuest, CurrQuest: TQuest): integer;
-var
-  CountQuest: TQuest;
-begin
-  result := 0;
-  CountQuest := FQuest;
-  while (CountQuest <> Nil) do
-  begin
-    CountQuest := NextQuest(CountQuest);
-    inc(result);
-    if (CountQuest = CurrQuest) then
-      CountQuest := Nil;
   end;
 end;
 
@@ -352,35 +330,97 @@ begin
   r := 1;
   HashCalc := 0;
   HashCalc := (HashCalc + GetHash(FirstQuest^.Title) * r) mod 100000000;
+  writeln(FirstQuest^.Title);
   inc(r);
   HashCalc := (HashCalc + GetHash(IntToStr(FirstQuest^.Time)) * r) mod 100000000;
+  writeln(FirstQuest^.Time);
   inc(r);
   HashCalc := (HashCalc + GetHash(IntToStr(GetNOQ(FirstQuest))) * r) mod 100000000;
+  writeln(IntToStr(GetNOQ(FirstQuest)));
   inc(r);
   CurrQuest := FirstQuest;
   for i := 1 to GetNOQ(FirstQuest) do
   begin
     CurrQuest := NextQuest(CurrQuest);
     HashCalc := (HashCalc + GetHash(CurrQuest^.Title) * r) mod 100000000;
+    writeln(CurrQuest^.Title);
     inc(r);
     HashCalc := (HashCalc + GetHash(IntToStr(GetCurrMark(CurrQuest))) * r) mod 100000000;
+    writeln(GetCurrMark(CurrQuest));
     inc(r);
     HashCalc := (HashCalc + GetHash(GetTOQ(CurrQuest)) * r) mod 100000000;
+    writeln(GetTOQ(CurrQuest));
     inc(r);
     HashCalc := (HashCalc + GetHash(IntToStr(GetNOO(CurrQuest))) * r) mod 100000000;
+    writeln(IntToStr(GetNOO(CurrQuest)));
     inc(r);
     HashCalc := (HashCalc + GetHash(GetAnswers(CurrQuest)) * r) mod 100000000;
+    writeln(GetAnswers(CurrQuest));
     inc(r);
     CurrOpt := CurrQuest^.Options;
     for j := 1 to GetNOO(CurrQuest) do
     begin
       NextOpt(CurrOpt);
       HashCalc := (HashCalc + GetHash(GetOptInfo(CurrOpt)) * r) mod 100000000;
+      writeln(GetOptInfo(CurrOpt));
       inc(r);
     end;
   end;
   HashCalc := HashCalc * GetSalt;
   result := HashCalc;
+end;
+
+function SaveTest(FQuest: TQuest): string;
+var
+  f: TextFile;
+  FirstQuest, CurrQuest, PrevQuest: TQuest;
+  FirstOpt, CurrOpt: TOpt;
+  Title, TOQ, Correct, Option: string;
+  i, j, k, NOQ, NOO, Time, Mark, CorrectInt: integer;
+  is_answer: boolean;
+begin
+  // ????? ?????
+  for i := 1 to 1000 do
+    if not (FileExists('test' + IntToStr(i) + '.txt')) then
+    begin
+      result := 'test' + IntToStr(i) + '.txt';
+      break;
+    end;
+
+  AssignFile(f, result);
+  ReWrite(f);
+  writeln(f, GetQuestHash(FQuest));
+  writeln(f, FQuest^.Title);
+  writeln(f, FQuest^.Time);
+  writeln(f, GetNOQ(FQuest));
+
+  CurrQuest := NextQuest(FQuest);
+  for i := 1 to GetNOQ(FQuest) do
+  begin
+    Title := CurrQuest^.Title;
+    Mark := CurrQuest^.Mark;
+    TOQ := CurrQuest^.TOQ;
+    NOO := GetNOO(CurrQuest);
+    CorrectInt := StrToInt(GetAnswers(CurrQuest));
+
+    writeln(f, Title);
+    writeln(f, Mark);
+    writeln(f, TOQ);
+    writeln(f, NOO);
+    writeln(f, CorrectInt);
+
+    CurrOpt := CurrQuest^.Options;
+    NextOpt(CurrOpt);
+
+    for j := 1 to GetNOO(CurrQuest) do
+    begin
+      Option := CurrOpt^.Info;
+      writeln(f, Option);
+      NextOpt(CurrOpt);
+    end;
+    CurrQuest := NextQuest(CurrQuest);
+  end;
+  CloseFile(f);
 end;
 
 function GetTitle(CurrQuest: TQuest): string;
@@ -487,13 +527,6 @@ begin
   FQuest^.NextQuest^.PrevQuest := Nil;
 end;
 
-procedure ClearOptions(var CurrQuest: TQuest);
-begin
-  CurrQuest^.Options := Nil;
-  new(CurrQuest^.Options);
-  CurrQuest^.Options^.NextOpt := Nil;
-end;
-
 procedure FillFirstOption(FQuest: TQuest);
 var
   CurrOpt: TOpt;
@@ -530,7 +563,6 @@ begin
   CurrOpt^.ID := ID;
   CurrOpt^.Info := Info;
   CurrOpt^.Answer := Answer;
-  CurrOpt^.NextOpt := Nil;
 end;
 
 procedure DeleteQuest(CurrQuest: TQuest);

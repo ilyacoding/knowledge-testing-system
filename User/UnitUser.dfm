@@ -1,11 +1,15 @@
 object Form1: TForm1
-  Left = 201
-  Top = 163
+  Left = 808
+  Top = 166
   BorderStyle = bsSingle
-  Caption = #1057#1080#1089#1090#1077#1084#1072' '#1090#1077#1089#1090#1080#1088#1086#1074#1072#1085#1080#1103' | '#1040#1076#1084#1080#1085#1080#1089#1090#1088#1072#1090#1086#1088
-  ClientHeight = 348
-  ClientWidth = 426
+  Caption = #1057#1080#1089#1090#1077#1084#1072' '#1090#1077#1089#1090#1080#1088#1086#1074#1072#1085#1080#1103' | '#1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
+  ClientHeight = 345
+  ClientWidth = 424
   Color = clBtnFace
+  Constraints.MaxHeight = 384
+  Constraints.MaxWidth = 440
+  Constraints.MinHeight = 384
+  Constraints.MinWidth = 440
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -16,313 +20,263 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object LabelEditTitle: TLabel
-    Left = 112
-    Top = 24
-    Width = 81
+  object Label2: TLabel
+    Left = 96
+    Top = 56
+    Width = 223
     Height = 13
-    Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1090#1077#1089#1090#1072
+    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1092#1072#1081#1083' '#1089' '#1090#1077#1089#1090#1086#1084' ('#1076#1074#1086#1081#1085#1099#1084' '#1082#1083#1080#1082#1086#1084')'
+  end
+  object LabelTime: TLabel
+    Left = 144
+    Top = 304
+    Width = 4
+    Height = 20
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
     Visible = False
   end
-  object LabelEditTime: TLabel
-    Left = 312
-    Top = 24
-    Width = 66
-    Height = 13
-    Caption = #1058#1072#1081#1084#1077#1088' ('#1089#1077#1082')'
-    Visible = False
-  end
-  object LabelAnswers: TLabel
-    Left = 16
-    Top = 136
-    Width = 219
-    Height = 13
-    Caption = #1042#1072#1088#1080#1072#1085#1090#1099' ('#1082#1086#1083#1080#1095#1077#1089#1090#1074#1086' '#1087#1086#1083#1077#1081' '#1086#1087#1094#1080#1086#1085#1072#1083#1100#1085#1086')'
-    Visible = False
-  end
-  object LabelAnswersValid: TLabel
-    Left = 248
-    Top = 136
-    Width = 39
-    Height = 13
-    Caption = #1042#1077#1088#1085#1099#1077
-    Visible = False
-  end
-  object LabelTitle: TLabel
-    Left = 192
+  object LabelResult: TLabel
+    Left = 104
     Top = 80
-    Width = 37
-    Height = 13
-    Caption = #1042#1086#1087#1088#1086#1089
-    Visible = False
-  end
-  object LabelMark: TLabel
-    Left = 312
-    Top = 120
-    Width = 38
-    Height = 13
-    Caption = #1054#1094#1077#1085#1082#1072
-    Visible = False
-  end
-  object LabelSavedSucc: TLabel
-    Left = 32
-    Top = 144
-    Width = 180
-    Height = 21
-    Caption = #1058#1077#1089#1090' '#1091#1089#1087#1077#1096#1085#1086' '#1089#1086#1093#1088#1072#1085#1077#1085' '#1074' '#1092#1072#1081#1083
+    Width = 6
+    Height = 28
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -16
     Font.Name = 'Segoe Print'
     Font.Style = []
     ParentFont = False
     Visible = False
   end
-  object LabelSelectTest: TLabel
-    Left = 168
-    Top = 288
-    Width = 75
+  object LabelName: TLabel
+    Left = 152
+    Top = 96
+    Width = 121
     Height = 13
-    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1090#1077#1089#1090
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1074#1072#1096#1091' '#1092#1072#1084#1080#1083#1080#1102
     Visible = False
+  end
+  object LabelSaved: TLabel
+    Left = 65
+    Top = 288
+    Width = 3
+    Height = 13
   end
   object sGauge1: TsGauge
     Left = 0
-    Top = 0
+    Top = 48
     Width = 425
-    Height = 17
+    Height = 25
+    Visible = False
     ForeColor = clBlack
     MaxValue = 100
     Suffix = '%'
   end
-  object ButtonStart: TButton
-    Left = 24
-    Top = 72
-    Width = 353
-    Height = 25
-    Caption = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1090#1077#1089#1090#1091
-    TabOrder = 4
-    Visible = False
-    OnClick = ButtonStartClick
-  end
-  object ListBoxFileSelect: TListBox
-    Left = 144
-    Top = 104
-    Width = 121
-    Height = 185
-    ItemHeight = 13
-    TabOrder = 21
-    Visible = False
-    OnDblClick = ListBoxFileSelectDblClick
-  end
-  object ButtonCreate: TButton
-    Left = 48
-    Top = 40
-    Width = 113
-    Height = 73
-    Caption = #1057#1086#1079#1076#1072#1090#1100' '#1090#1077#1089#1090
-    TabOrder = 0
-    OnClick = ButtonCreateClick
-  end
-  object ButtonEdit: TButton
-    Left = 264
-    Top = 40
-    Width = 113
-    Height = 73
-    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1089#1090
-    TabOrder = 1
-    OnClick = ButtonEditClick
-  end
-  object EditTitle: TEdit
-    Left = 16
-    Top = 40
-    Width = 257
-    Height = 24
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    MaxLength = 35
+  object Label1: TsLabel
+    Left = 19
+    Top = 16
+    Width = 8
+    Height = 33
     ParentFont = False
-    TabOrder = 2
-    Visible = False
-    OnKeyPress = EditTitleKeyPress
-  end
-  object EditTime: TEdit
-    Left = 312
-    Top = 40
-    Width = 57
-    Height = 24
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'MS Sans Serif'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -19
+    Font.Name = 'Segoe Print'
     Font.Style = []
-    MaxLength = 7
-    ParentFont = False
-    TabOrder = 3
-    Visible = False
-    OnKeyPress = EditTimeKeyPress
   end
-  object ButtonPrev: TButton
-    Left = 24
-    Top = 296
-    Width = 75
-    Height = 25
-    Caption = #1055#1088#1077#1076#1099#1076#1091#1097#1080#1081
-    TabOrder = 5
-    Visible = False
-    OnClick = ButtonPrevClick
-  end
-  object ButtonNext: TButton
-    Left = 328
-    Top = 296
-    Width = 75
-    Height = 25
-    Caption = #1057#1083#1077#1076#1091#1102#1097#1080#1081
-    TabOrder = 6
-    Visible = False
-    OnClick = ButtonNextClick
-  end
-  object EditQuestTitle: TEdit
-    Left = 32
-    Top = 96
-    Width = 361
-    Height = 24
+  object ListBoxResult: TsMemo
+    Left = 0
+    Top = 112
+    Width = 425
+    Height = 169
+    Color = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
+    Font.Color = clBlack
+    Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
-    TabOrder = 8
-    Visible = False
-  end
-  object Edit1: TEdit
-    Left = 16
-    Top = 152
-    Width = 233
-    Height = 21
-    MaxLength = 37
-    TabOrder = 9
-    Visible = False
-  end
-  object Edit2: TEdit
-    Left = 16
-    Top = 176
-    Width = 233
-    Height = 21
-    MaxLength = 37
-    TabOrder = 10
-    Visible = False
-  end
-  object Edit3: TEdit
-    Left = 16
-    Top = 200
-    Width = 233
-    Height = 21
-    MaxLength = 37
+    ReadOnly = True
+    ScrollBars = ssVertical
     TabOrder = 11
     Visible = False
   end
-  object Edit4: TEdit
-    Left = 16
-    Top = 224
-    Width = 233
-    Height = 21
-    MaxLength = 37
-    TabOrder = 12
-    Visible = False
+  object ListBoxFileSelect: TListBox
+    Left = 128
+    Top = 104
+    Width = 145
+    Height = 153
+    ItemHeight = 13
+    TabOrder = 6
+    OnDblClick = ListBoxFileSelectDblClick
   end
-  object Edit5: TEdit
-    Left = 16
-    Top = 248
-    Width = 233
-    Height = 21
-    MaxLength = 37
-    TabOrder = 13
+  object Button4: TButton
+    Left = 152
+    Top = 48
+    Width = 105
+    Height = 49
+    Caption = #1053#1072#1095#1072#1090#1100' '#1058#1045#1057#1058'!'
+    TabOrder = 2
     Visible = False
+    OnClick = Button4Click
   end
-  object CheckBox1: TCheckBox
-    Left = 256
-    Top = 152
-    Width = 17
-    Height = 17
-    TabOrder = 14
+  object Button2: TButton
+    Left = 320
+    Top = 296
+    Width = 83
+    Height = 25
+    Caption = #1057#1083#1077#1076#1091#1102#1097#1080#1081
+    TabOrder = 0
     Visible = False
+    OnClick = Button2Click
   end
-  object CheckBox2: TCheckBox
-    Left = 256
-    Top = 176
-    Width = 17
-    Height = 17
-    TabOrder = 15
+  object Button1: TButton
+    Left = 24
+    Top = 296
+    Width = 81
+    Height = 25
+    Caption = #1055#1088#1077#1076#1099#1076#1091#1097#1080#1081
+    TabOrder = 1
     Visible = False
+    OnClick = Button1Click
   end
-  object CheckBox3: TCheckBox
-    Left = 256
-    Top = 200
-    Width = 17
-    Height = 17
-    TabOrder = 16
-    Visible = False
-  end
-  object CheckBox4: TCheckBox
-    Left = 256
-    Top = 224
-    Width = 17
-    Height = 17
-    TabOrder = 17
-    Visible = False
-  end
-  object CheckBox5: TCheckBox
-    Left = 256
-    Top = 248
-    Width = 17
-    Height = 17
-    TabOrder = 18
-    Visible = False
-  end
-  object ButtonNewQuest: TButton
-    Left = 296
-    Top = 176
-    Width = 123
+  object ButtonFinish: TButton
+    Left = 336
+    Top = 192
+    Width = 75
     Height = 73
-    Caption = #1057#1086#1079#1076#1072#1090#1100' '#1074#1086#1087#1088#1086#1089
+    Caption = #1047#1072#1074#1077#1088#1096#1080#1090#1100
+    TabOrder = 3
+    Visible = False
+    OnClick = ButtonFinishClick
+  end
+  object EditName: TEdit
+    Left = 152
+    Top = 112
+    Width = 121
+    Height = 21
+    Hint = #1052#1080#1085#1080#1084#1091#1084' 3 '#1089#1080#1084#1074#1086#1083#1072
+    MaxLength = 17
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+    Visible = False
+    OnKeyPress = EditNameKeyPress
+  end
+  object ButtonName: TButton
+    Left = 176
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
+    TabOrder = 5
+    Visible = False
+    OnClick = ButtonNameClick
+  end
+  object RadioGroup1: TsRadioGroup
+    Left = 24
+    Top = 176
+    Width = 305
+    Height = 105
+    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1086#1090#1074#1077#1090
     TabOrder = 7
     Visible = False
-    OnClick = ButtonNewQuestClick
+    Checked = False
   end
-  object ButtonSaveResult: TButton
-    Left = 152
-    Top = 320
-    Width = 121
-    Height = 25
-    Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1088#1077#1079#1091#1083#1100#1090#1072#1090
-    TabOrder = 19
+  object GroupBoxChecked: TsGroupBox
+    Left = 24
+    Top = 176
+    Width = 305
+    Height = 105
+    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1086#1090#1074#1077#1090#1099
+    TabOrder = 8
     Visible = False
-    OnClick = ButtonSaveResultClick
+    Checked = False
+    object CheckBox1: TsCheckBox
+      Left = 8
+      Top = 16
+      Width = 19
+      Height = 15
+      TabOrder = 0
+      Visible = False
+      ImgChecked = 0
+      ImgUnchecked = 0
+    end
+    object CheckBox2: TsCheckBox
+      Left = 8
+      Top = 32
+      Width = 19
+      Height = 15
+      TabOrder = 1
+      Visible = False
+      ImgChecked = 0
+      ImgUnchecked = 0
+    end
+    object CheckBox3: TsCheckBox
+      Left = 8
+      Top = 48
+      Width = 19
+      Height = 15
+      TabOrder = 2
+      Visible = False
+      ImgChecked = 0
+      ImgUnchecked = 0
+    end
+    object CheckBox4: TsCheckBox
+      Left = 8
+      Top = 64
+      Width = 19
+      Height = 15
+      TabOrder = 3
+      Visible = False
+      ImgChecked = 0
+      ImgUnchecked = 0
+    end
+    object CheckBox5: TsCheckBox
+      Left = 8
+      Top = 80
+      Width = 19
+      Height = 15
+      TabOrder = 4
+      Visible = False
+      ImgChecked = 0
+      ImgUnchecked = 0
+    end
   end
-  object EditMark: TEdit
-    Left = 352
-    Top = 120
-    Width = 41
-    Height = 21
-    MaxLength = 5
-    TabOrder = 20
-    Visible = False
-    OnKeyPress = EditMarkKeyPress
-  end
-  object ButtonDelete: TButton
-    Left = 96
+  object ProgressBar1: TsProgressBar
+    Left = 0
     Top = 328
-    Width = 49
+    Width = 425
     Height = 17
-    Caption = #1059#1076#1072#1083#1080#1090#1100
-    TabOrder = 22
+    TabOrder = 9
     Visible = False
-    OnClick = ButtonDeleteClick
+  end
+  object sMemoTitle: TsMemo
+    Left = 24
+    Top = 80
+    Width = 377
+    Height = 89
+    Color = clWhite
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 10
+    Visible = False
+  end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    Left = 400
   end
   object sSkinManager1: TsSkinManager
     InternalSkins = <
@@ -2349,7 +2303,6 @@ object Form1: TForm1
     ThirdParty.ThirdScrollBar = ' '
     ThirdParty.ThirdStaticText = ' '
     ThirdParty.ThirdNativePaint = ' '
-    Left = 400
-    Top = 8
+    Left = 368
   end
 end
