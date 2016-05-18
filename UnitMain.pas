@@ -51,7 +51,7 @@ begin
   if IsExit then
     CanClose := True
   else
-  case MessageBox(Handle, 'Вы действительно хотите выйти?', 'Выход', MB_YESNO + MB_ICONQUESTION) of
+  case MessageBox(Handle, 'Вы действительно хотите выйти? ', 'Выход', MB_YESNO + MB_ICONQUESTION) of
     IDYES:
     begin
       CanClose := True;

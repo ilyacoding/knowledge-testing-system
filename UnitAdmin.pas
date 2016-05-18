@@ -146,9 +146,7 @@ begin
     FormAdmin.EditMark.Text := '1';
 
   CQ^.Mark := StrToInt(FormAdmin.EditMark.Text);
-
   ClearOptions(CQ);
-
   if (length(FormAdmin.Edit1.Text) > 0) then
     AddOption(CQ, FormAdmin.Edit1.Text, FormAdmin.CheckBox1.Checked);
   if (length(FormAdmin.Edit2.Text) > 0) then
