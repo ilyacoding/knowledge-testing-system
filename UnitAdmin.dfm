@@ -1,11 +1,15 @@
-object Form1: TForm1
-  Left = 180
-  Top = 124
+object FormAdmin: TFormAdmin
+  Left = 899
+  Top = 250
   BorderStyle = bsSingle
   Caption = #1057#1080#1089#1090#1077#1084#1072' '#1090#1077#1089#1090#1080#1088#1086#1074#1072#1085#1080#1103' | '#1040#1076#1084#1080#1085#1080#1089#1090#1088#1072#1090#1086#1088
   ClientHeight = 348
   ClientWidth = 426
   Color = clBtnFace
+  Constraints.MaxHeight = 387
+  Constraints.MaxWidth = 442
+  Constraints.MinHeight = 387
+  Constraints.MinWidth = 442
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -325,6 +329,7 @@ object Form1: TForm1
     OnClick = ButtonDeleteClick
   end
   object sSkinManager1: TsSkinManager
+    IsDefault = False
     InternalSkins = <
       item
         Name = 'Zest (internal)'

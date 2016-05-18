@@ -1,15 +1,15 @@
 object Form1: TForm1
-  Left = 808
-  Top = 166
+  Left = 314
+  Top = 213
   BorderStyle = bsSingle
-  Caption = #1057#1080#1089#1090#1077#1084#1072' '#1090#1077#1089#1090#1080#1088#1086#1074#1072#1085#1080#1103' | '#1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
-  ClientHeight = 345
-  ClientWidth = 424
+  Caption = #1057#1080#1089#1090#1077#1084#1072' '#1090#1077#1089#1090#1080#1088#1086#1074#1072#1085#1080#1103
+  ClientHeight = 114
+  ClientWidth = 305
   Color = clBtnFace
-  Constraints.MaxHeight = 384
-  Constraints.MaxWidth = 440
-  Constraints.MinHeight = 384
-  Constraints.MinWidth = 440
+  Constraints.MaxHeight = 153
+  Constraints.MaxWidth = 321
+  Constraints.MinHeight = 153
+  Constraints.MinWidth = 321
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -20,263 +20,23 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Label2: TLabel
-    Left = 96
-    Top = 56
-    Width = 223
-    Height = 13
-    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1092#1072#1081#1083' '#1089' '#1090#1077#1089#1090#1086#1084' ('#1076#1074#1086#1081#1085#1099#1084' '#1082#1083#1080#1082#1086#1084')'
-  end
-  object LabelTime: TLabel
-    Left = 144
-    Top = 304
-    Width = 4
-    Height = 20
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    Visible = False
-  end
-  object LabelResult: TLabel
-    Left = 104
-    Top = 80
-    Width = 6
-    Height = 28
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Segoe Print'
-    Font.Style = []
-    ParentFont = False
-    Visible = False
-  end
-  object LabelName: TLabel
-    Left = 152
-    Top = 96
-    Width = 121
-    Height = 13
-    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1074#1072#1096#1091' '#1092#1072#1084#1080#1083#1080#1102
-    Visible = False
-  end
-  object LabelSaved: TLabel
-    Left = 65
-    Top = 288
-    Width = 3
-    Height = 13
-  end
-  object sGauge1: TsGauge
-    Left = 0
-    Top = 48
-    Width = 425
-    Height = 25
-    Visible = False
-    ForeColor = clBlack
-    MaxValue = 100
-    Suffix = '%'
-  end
-  object Label1: TsLabel
-    Left = 19
-    Top = 16
-    Width = 8
-    Height = 33
-    ParentFont = False
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clBlack
-    Font.Height = -19
-    Font.Name = 'Segoe Print'
-    Font.Style = []
-  end
-  object ListBoxResult: TsMemo
-    Left = 0
-    Top = 112
-    Width = 425
-    Height = 169
-    Color = clWhite
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    ReadOnly = True
-    ScrollBars = ssVertical
-    TabOrder = 11
-    Visible = False
-  end
-  object ListBoxFileSelect: TListBox
-    Left = 128
-    Top = 104
-    Width = 145
-    Height = 153
-    ItemHeight = 13
-    TabOrder = 6
-    OnDblClick = ListBoxFileSelectDblClick
-  end
-  object Button4: TButton
-    Left = 152
-    Top = 48
-    Width = 105
-    Height = 49
-    Caption = #1053#1072#1095#1072#1090#1100' '#1058#1045#1057#1058'!'
-    TabOrder = 2
-    Visible = False
-    OnClick = Button4Click
-  end
-  object Button2: TButton
-    Left = 320
-    Top = 296
-    Width = 83
-    Height = 25
-    Caption = #1057#1083#1077#1076#1091#1102#1097#1080#1081
+  object ButtonOpenAdmin: TButton
+    Left = 24
+    Top = 24
+    Width = 113
+    Height = 65
+    Caption = #1040#1076#1084#1080#1085#1080#1089#1090#1088#1072#1090#1086#1088
     TabOrder = 0
-    Visible = False
-    OnClick = Button2Click
+    OnClick = ButtonOpenAdminClick
   end
-  object Button1: TButton
-    Left = 24
-    Top = 296
-    Width = 81
-    Height = 25
-    Caption = #1055#1088#1077#1076#1099#1076#1091#1097#1080#1081
+  object ButtonOpenUser: TButton
+    Left = 168
+    Top = 24
+    Width = 113
+    Height = 65
+    Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
     TabOrder = 1
-    Visible = False
-    OnClick = Button1Click
-  end
-  object ButtonFinish: TButton
-    Left = 336
-    Top = 192
-    Width = 75
-    Height = 73
-    Caption = #1047#1072#1074#1077#1088#1096#1080#1090#1100
-    TabOrder = 3
-    Visible = False
-    OnClick = ButtonFinishClick
-  end
-  object EditName: TEdit
-    Left = 152
-    Top = 112
-    Width = 121
-    Height = 21
-    Hint = #1052#1080#1085#1080#1084#1091#1084' 3 '#1089#1080#1084#1074#1086#1083#1072
-    MaxLength = 17
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 4
-    Visible = False
-    OnKeyPress = EditNameKeyPress
-  end
-  object ButtonName: TButton
-    Left = 176
-    Top = 136
-    Width = 75
-    Height = 25
-    Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
-    TabOrder = 5
-    Visible = False
-    OnClick = ButtonNameClick
-  end
-  object RadioGroup1: TsRadioGroup
-    Left = 24
-    Top = 176
-    Width = 305
-    Height = 105
-    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1086#1090#1074#1077#1090
-    TabOrder = 7
-    Visible = False
-    Checked = False
-  end
-  object GroupBoxChecked: TsGroupBox
-    Left = 24
-    Top = 176
-    Width = 305
-    Height = 105
-    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1086#1090#1074#1077#1090#1099
-    TabOrder = 8
-    Visible = False
-    Checked = False
-    object CheckBox1: TsCheckBox
-      Left = 8
-      Top = 16
-      Width = 19
-      Height = 15
-      TabOrder = 0
-      Visible = False
-      ImgChecked = 0
-      ImgUnchecked = 0
-    end
-    object CheckBox2: TsCheckBox
-      Left = 8
-      Top = 32
-      Width = 19
-      Height = 15
-      TabOrder = 1
-      Visible = False
-      ImgChecked = 0
-      ImgUnchecked = 0
-    end
-    object CheckBox3: TsCheckBox
-      Left = 8
-      Top = 48
-      Width = 19
-      Height = 15
-      TabOrder = 2
-      Visible = False
-      ImgChecked = 0
-      ImgUnchecked = 0
-    end
-    object CheckBox4: TsCheckBox
-      Left = 8
-      Top = 64
-      Width = 19
-      Height = 15
-      TabOrder = 3
-      Visible = False
-      ImgChecked = 0
-      ImgUnchecked = 0
-    end
-    object CheckBox5: TsCheckBox
-      Left = 8
-      Top = 80
-      Width = 19
-      Height = 15
-      TabOrder = 4
-      Visible = False
-      ImgChecked = 0
-      ImgUnchecked = 0
-    end
-  end
-  object ProgressBar1: TsProgressBar
-    Left = 0
-    Top = 328
-    Width = 425
-    Height = 17
-    TabOrder = 9
-    Visible = False
-  end
-  object sMemoTitle: TsMemo
-    Left = 24
-    Top = 80
-    Width = 377
-    Height = 89
-    Color = clWhite
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clBlack
-    Font.Height = -13
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
-    ReadOnly = True
-    ScrollBars = ssVertical
-    TabOrder = 10
-    Visible = False
-  end
-  object Timer1: TTimer
-    Enabled = False
-    OnTimer = Timer1Timer
-    Left = 400
+    OnClick = ButtonOpenUserClick
   end
   object sSkinManager1: TsSkinManager
     InternalSkins = <
@@ -2280,29 +2040,29 @@ object Form1: TForm1
     SkinDirectory = 'c:\Skins'
     SkinName = 'Zest (internal)'
     SkinInfo = '10.25'
-    ThirdParty.ThirdEdits = ' '
-    ThirdParty.ThirdButtons = 'TButton'
-    ThirdParty.ThirdBitBtns = ' '
-    ThirdParty.ThirdCheckBoxes = ' '
-    ThirdParty.ThirdGroupBoxes = ' '
-    ThirdParty.ThirdListViews = ' '
-    ThirdParty.ThirdPanels = ' '
-    ThirdParty.ThirdGrids = ' '
-    ThirdParty.ThirdTreeViews = ' '
-    ThirdParty.ThirdComboBoxes = ' '
-    ThirdParty.ThirdWWEdits = ' '
-    ThirdParty.ThirdVirtualTrees = ' '
-    ThirdParty.ThirdGridEh = ' '
-    ThirdParty.ThirdPageControl = ' '
-    ThirdParty.ThirdTabControl = ' '
-    ThirdParty.ThirdToolBar = ' '
-    ThirdParty.ThirdStatusBar = ' '
-    ThirdParty.ThirdSpeedButton = ' '
-    ThirdParty.ThirdScrollControl = ' '
-    ThirdParty.ThirdUpDown = ' '
-    ThirdParty.ThirdScrollBar = ' '
-    ThirdParty.ThirdStaticText = ' '
-    ThirdParty.ThirdNativePaint = ' '
-    Left = 368
+    ThirdParty.ThirdEdits = ' '#13#10
+    ThirdParty.ThirdButtons = 'TButton'#13#10
+    ThirdParty.ThirdBitBtns = ' '#13#10
+    ThirdParty.ThirdCheckBoxes = ' '#13#10
+    ThirdParty.ThirdGroupBoxes = ' '#13#10
+    ThirdParty.ThirdListViews = ' '#13#10
+    ThirdParty.ThirdPanels = ' '#13#10
+    ThirdParty.ThirdGrids = ' '#13#10
+    ThirdParty.ThirdTreeViews = ' '#13#10
+    ThirdParty.ThirdComboBoxes = ' '#13#10
+    ThirdParty.ThirdWWEdits = ' '#13#10
+    ThirdParty.ThirdVirtualTrees = ' '#13#10
+    ThirdParty.ThirdGridEh = ' '#13#10
+    ThirdParty.ThirdPageControl = ' '#13#10
+    ThirdParty.ThirdTabControl = ' '#13#10
+    ThirdParty.ThirdToolBar = ' '#13#10
+    ThirdParty.ThirdStatusBar = ' '#13#10
+    ThirdParty.ThirdSpeedButton = ' '#13#10
+    ThirdParty.ThirdScrollControl = ' '#13#10
+    ThirdParty.ThirdUpDown = ' '#13#10
+    ThirdParty.ThirdScrollBar = ' '#13#10
+    ThirdParty.ThirdStaticText = ' '#13#10
+    ThirdParty.ThirdNativePaint = ' '#13#10
+    Left = 272
   end
 end
