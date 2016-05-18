@@ -1,4 +1,4 @@
-unit UnitModelAdmin;
+unit UnitModel;
 
 interface
 
@@ -114,7 +114,7 @@ function IsTestValid(testFile: string): boolean;
 var
   f: TextFile;
   HashFile, row: string;
-  HashCalc, i, r: integer;
+  HashCalc, r: integer;
 begin
   AssignFile(f, testFile);
   Reset(f);
@@ -150,8 +150,8 @@ end;
 function OpenTest(testFile: string): TQuest;
 var
   f: TextFile;
-  FirstQuest, CurrQuest, PrevQuest: TQuest;
-  FirstOpt, CurrOpt: TOpt;
+  FirstQuest, CurrQuest: TQuest;
+  CurrOpt: TOpt;
   Title, TOQ, Correct, Option: string;
   i, j, k, NOQ, NOO, Time, Mark, CorrectInt: integer;
   is_answer: boolean;
@@ -342,12 +342,9 @@ end;
 
 function GetQuestHash(FirstQuest: TQuest): integer;
 var
-  f: TextFile;
-  CurrQuest, PrevQuest: TQuest;
-  FirstOpt, CurrOpt: TOpt;
-  TOQ, Correct, Option, row: string;
-  i, j, k, NOO, Mark, CorrectInt, HashCalc, r: integer;
-  is_answer: boolean;
+  CurrQuest: TQuest;
+  CurrOpt: TOpt;
+  i, j, HashCalc, r: integer;
 begin
   r := 1;
   HashCalc := 0;
