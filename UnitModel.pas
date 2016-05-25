@@ -113,28 +113,18 @@ end;
 function IsTestValid(testFile: string): boolean;
 var
   f: TextFile;
-  HashFile, row: string;
-  HashCalc, r: integer;
+  HashFile: string;
 begin
   AssignFile(f, testFile);
   Reset(f);
 
   readln(f, HashFile);
-  HashCalc := 0;
-  r := 1;
-  while not EoF(f) do
-  begin
-    readln(f, row);
-    HashCalc := (HashCalc + GetHash(row) * r) mod 100000000;
-    inc(r);
-  end;
-  HashCalc := HashCalc * GetSalt;
+  CloseFile(f);
 
-  if (HashFile = IntToStr(HashCalc)) then
+  if (HashFile = IntToStr(GetFileHash(testFile))) then
     result := true
   else
     result := false;
-  CloseFile(f);
 end;
 
 function GetUserAnswers(CurrQuest: TQuest): string;
@@ -259,7 +249,7 @@ begin
   while (CurrOpt <> Nil) do
   begin
     CurrOpt := CurrOpt^.NextOpt;
-    result := result + 1;
+    inc(result);
   end;
 end;
 
