@@ -48,7 +48,7 @@ end;
 
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  if IsExit then
+  if (IsExit) then
     CanClose := True
   else
   case MessageBox(Handle, 'Вы действительно хотите выйти? ', 'Выход', MB_YESNO + MB_ICONQUESTION) of
@@ -66,6 +66,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Form1.ButtonOpenAdmin.TabStop := false;
+  IsExit := false;
   Form1.ButtonOpenUser.TabStop := false;
 end;
 

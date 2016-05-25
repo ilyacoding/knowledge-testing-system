@@ -118,6 +118,12 @@ begin
       FormUser.Button2.Visible := false;
       FormUser.ButtonFinish.Visible := false;
     end
+    else if (PrevQuest(CQ) = Nil) and (NextQuest(CQ) = Nil) then
+    begin
+      FormUser.Button1.Visible := false;
+      FormUser.Button2.Visible := false;
+      FormUser.ButtonFinish.Visible := true;
+    end
     else if (PrevQuest(CQ) = Nil) then
     begin
       FormUser.Button1.Visible := false;

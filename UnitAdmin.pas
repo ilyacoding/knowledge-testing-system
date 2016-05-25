@@ -191,15 +191,15 @@ end;
 function IsAnswerGiven: boolean;
 begin
   result := false;
-  if (FormAdmin.CheckBox1.Checked) then
+  if (FormAdmin.CheckBox1.Checked) and (length(trim(FormAdmin.Edit1.Text)) > 1) then
     result := true
-  else if (FormAdmin.CheckBox2.Checked) then
+  else if (FormAdmin.CheckBox2.Checked) and (length(trim(FormAdmin.Edit2.Text)) > 1) then
     result := true
-  else if (FormAdmin.CheckBox3.Checked) then
+  else if (FormAdmin.CheckBox3.Checked) and (length(trim(FormAdmin.Edit3.Text)) > 1) then
     result := true
-  else if (FormAdmin.CheckBox4.Checked) then
+  else if (FormAdmin.CheckBox4.Checked) and (length(trim(FormAdmin.Edit4.Text)) > 1) then
     result := true
-  else if (FormAdmin.CheckBox5.Checked) then
+  else if (FormAdmin.CheckBox5.Checked) and (length(trim(FormAdmin.Edit5.Text)) > 1) then
     result := true;
 end;
 
@@ -402,9 +402,8 @@ end;
 
 procedure TFormAdmin.ButtonStartClick(Sender: TObject);
 begin
-  if ((length(FormAdmin.EditTitle.Text) > 3) and (length(FormAdmin.EditTime.Text) > 1)) then
+  if ((length(trim(FormAdmin.EditTitle.Text)) > 3) and (StrToInt(FormAdmin.EditTime.Text) > 10)) then
   begin
-
     FormAdmin.EditTitle.Readonly := true;
     FormAdmin.EditTime.Readonly := true;
     FormAdmin.EditTitle.Enabled := false;
@@ -440,12 +439,14 @@ begin
     IsRunning := true;
   end
   else
-    MessageBox(handle, PChar('Минимальная длина для названия - 4 символа, для времени - 2 символа.'), PChar('Ошибка ввода'),(MB_OK+MB_ICONWARNING));
+    MessageBox(handle, PChar('Минимальная длина для названия - 4 символа, для времени - 11 секунд.'), PChar('Ошибка ввода'),(MB_OK+MB_ICONWARNING));
 end;
 
 procedure TFormAdmin.ButtonNewQuestClick(Sender: TObject);
 begin
-  if (not IsFieldsClean) and IsAnswerGiven and (not IsFieldsTitleClean) and (length(FormAdmin.EditQuestTitle.Text) > 2) then
+  if (not (IsAnswerGiven)) then
+    MessageBox(handle, PChar('Минимум один ответ.'), PChar('Ошибка ввода'),(MB_OK+MB_ICONWARNING))
+  else if (not IsFieldsClean) and IsAnswerGiven and (not IsFieldsTitleClean) and (length(FormAdmin.EditQuestTitle.Text) > 2) then
   begin
     SaveFields;
     InitCQ;
@@ -459,14 +460,16 @@ end;
 
 procedure TFormAdmin.ButtonPrevClick(Sender: TObject);
 begin
-  if (IsFieldsTitleClean and IsFieldsClean) and (PrevQuest(CQ) <> Nil) then
+  if (not (IsAnswerGiven)) and (not (IsFieldsTitleClean and IsFieldsClean)) then
+    MessageBox(handle, PChar('Минимум один ответ.'), PChar('Ошибка ввода'),(MB_OK + MB_ICONWARNING))
+  else if (IsFieldsTitleClean and IsFieldsClean) and (PrevQuest(CQ) <> Nil) then
   begin
     CQ^.PrevQuest^.NextQuest := Nil;
     CQ := PrevQuest(CQ);
     SetButtons;
     LoadFields;
   end
-  else if ((length(FormAdmin.EditQuestTitle.Text) > 2) and IsAnswerGiven and (not IsFieldsClean)) then
+  else if ((length(trim(FormAdmin.EditQuestTitle.Text)) > 2) and IsAnswerGiven and (not IsFieldsClean)) then
   begin
     SaveFields;
 
@@ -484,7 +487,9 @@ end;
 
 procedure TFormAdmin.ButtonNextClick(Sender: TObject);
 begin
-  if (length(FormAdmin.EditQuestTitle.Text) > 2) and IsAnswerGiven and (not IsFieldsClean) then
+  if not (IsAnswerGiven) then
+    MessageBox(handle, PChar('Минимум один ответ.'), PChar('Ошибка ввода'),(MB_OK+MB_ICONWARNING))
+  else if (length(trim(FormAdmin.EditQuestTitle.Text)) > 2) and IsAnswerGiven and (not IsFieldsClean) then
   begin
     SaveFields;
 
@@ -497,12 +502,36 @@ begin
     LoadFields;
   end
   else
-    MessageBox(handle, PChar('Минимальная длина для названия - 3 символ. Если оценка за вопрос не будет указана, то она будет равна 1 по-умолчанию. Поля должны быть заполнены. Минимум один ответ.'), PChar('Ошибка ввода'),(MB_OK+MB_ICONWARNING));
+    MessageBox(handle, PChar('Минимальная длина для названия - 3 символ. Если оценка за вопрос не будет указана, то она будет равна 1 по-умолчанию. Поля должны быть заполнены.'), PChar('Ошибка ввода'),(MB_OK+MB_ICONWARNING));
 end;
 
 procedure TFormAdmin.ButtonSaveResultClick(Sender: TObject);
 begin
-  if (length(FormAdmin.EditQuestTitle.Text) > 2) and IsAnswerGiven and (not IsFieldsClean) then
+  if (not (IsAnswerGiven)) and (not (IsFieldsTitleClean and IsFieldsClean)) then
+    MessageBox(handle, PChar('Минимум один ответ.'), PChar('Ошибка ввода'),(MB_OK + MB_ICONWARNING))
+  else if (IsFieldsTitleClean and IsFieldsClean) and (PrevQuest(CQ) <> Nil) then
+  begin
+    CQ^.PrevQuest^.NextQuest := Nil;
+    CQ := PrevQuest(CQ);
+    LoadFields;
+
+    SaveFields;
+    ClearField;
+    SetFieldUnVisible;
+    if (TOA = 'create') then
+    begin
+      FormAdmin.LabelSavedSucc.Visible := true;
+      FormAdmin.LabelSavedSucc.Caption := FormAdmin.LabelSavedSucc.Caption + ' Tests/' + SaveTest(FQuest, '');
+    end
+    else if (TOA = 'edit') then
+    begin
+      FormAdmin.LabelSavedSucc.Visible := true;
+      FormAdmin.LabelSavedSucc.Caption := FormAdmin.LabelSavedSucc.Caption + ' Tests/' + SaveTest(FQuest, testname + '.txt') + ' [Обновлено]';
+    end;
+    FormAdmin.sGauge1.Visible := false;
+    IsRunning := false;
+  end
+  else if (length(trim(FormAdmin.EditQuestTitle.Text)) > 2) and IsAnswerGiven and (not IsFieldsClean) then
   begin
     SaveFields;
 
@@ -620,7 +649,7 @@ begin
     end;
   end
   else
-  begin
+  begin 
     case MessageBox(Handle, 'Вы действительно хотите выйти БЕЗ СОХРАНЕНИЯ?', 'Выход', MB_YESNO + MB_ICONWARNING) of
     IDYES:
       begin
@@ -633,5 +662,4 @@ begin
     end;
   end;
 end;
-
 end.

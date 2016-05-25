@@ -147,7 +147,7 @@ object FormAdmin: TFormAdmin
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
     Font.Style = []
-    MaxLength = 35
+    MaxLength = 30
     ParentFont = False
     TabOrder = 2
     Visible = False
@@ -163,7 +163,7 @@ object FormAdmin: TFormAdmin
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
     Font.Style = []
-    MaxLength = 7
+    MaxLength = 4
     ParentFont = False
     TabOrder = 3
     Visible = False
@@ -313,7 +313,7 @@ object FormAdmin: TFormAdmin
     Top = 120
     Width = 41
     Height = 21
-    MaxLength = 5
+    MaxLength = 2
     TabOrder = 20
     Visible = False
     OnKeyPress = EditMarkKeyPress
