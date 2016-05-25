@@ -421,14 +421,14 @@ begin
   if not (IsRunning) then
   begin
     case MessageBox(Handle, 'Вы действительно хотите выйти?', 'Завершение', MB_YESNO + MB_ICONQUESTION) of
-    IDYES:
-    begin
-      CanClose:=True;
-    end;
-    IDNO:
-    begin
-      CanClose:=False;
-    end;
+      IDYES:
+      begin
+        CanClose:=True;
+      end;
+      IDNO:
+      begin
+        CanClose:=False;
+      end;
     end;
   end
   else

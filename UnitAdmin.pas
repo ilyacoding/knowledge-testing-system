@@ -618,7 +618,7 @@ begin
       ButtonNext.click;
     end
     else
-    MessageBox(handle, PChar('В тесте должен быть по крайней мере один вопрос.'), PChar('Ошибка удаления'),(MB_OK+MB_ICONERROR));
+    MessageBox(handle, PChar('В тесте должен быть по крайней мере один вопрос!'), PChar('Ошибка удаления'),(MB_OK+MB_ICONERROR));
   end
   else if ((PrevQuest(CQ) <> Nil) and (NextQuest(CQ) <> Nil)) then
   begin
