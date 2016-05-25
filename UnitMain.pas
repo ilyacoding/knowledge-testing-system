@@ -66,8 +66,8 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Form1.ButtonOpenAdmin.TabStop := false;
-  IsExit := false;
   Form1.ButtonOpenUser.TabStop := false;
+  IsExit := false;
 end;
 
 end.
