@@ -1,6 +1,7 @@
 object FormUser: TFormUser
   Left = 797
   Top = 195
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1057#1080#1089#1090#1077#1084#1072' '#1090#1077#1089#1090#1080#1088#1086#1074#1072#1085#1080#1103' | '#1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
   ClientHeight = 345
