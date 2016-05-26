@@ -1,6 +1,7 @@
 object FormAdmin: TFormAdmin
   Left = 899
   Top = 250
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1057#1080#1089#1090#1077#1084#1072' '#1090#1077#1089#1090#1080#1088#1086#1074#1072#1085#1080#1103' | '#1040#1076#1084#1080#1085#1080#1089#1090#1088#1072#1090#1086#1088
   ClientHeight = 348
