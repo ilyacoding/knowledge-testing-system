@@ -318,7 +318,7 @@ end;
 
 procedure TFormUser.ListBoxFileSelectDblClick(Sender: TObject);
 begin
-  if (length(FormUser.ListBoxFileSelect.Items[FormUser.ListBoxFileSelect.ItemIndex]) > 1) then
+  if (length(FormUser.ListBoxFileSelect.Items[FormUser.ListBoxFileSelect.ItemIndex]) > 1) and IsTestValid(ExtractFilePath(Application.ExeName) + 'Tests/' + FormUser.ListBoxFileSelect.Items[FormUser.ListBoxFileSelect.ItemIndex] + '.txt') then
   begin
     Test(ExtractFilePath(Application.ExeName) + 'Tests/' + FormUser.ListBoxFileSelect.Items[FormUser.ListBoxFileSelect.ItemIndex] + '.txt');
   end;
