@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, UnitModel, ExtCtrls, ComCtrls, sSkinManager, Buttons,
   sGauge, sButton, sCheckBox, sPanel, acSlider, acMeter, OleCtrls, SHDocVw,
-  acWebBrowser, sScrollBar;
+  sScrollBar;
 
 type
   TFormAdmin = class(TForm)
@@ -390,8 +390,8 @@ end;
 
 procedure TFormAdmin.ListBoxFileSelectDblClick(Sender: TObject);
 begin
-  if (length(FormAdmin.ListBoxFileSelect.Items[FormAdmin.ListBoxFileSelect.ItemIndex]) > 1) then
-  begin          
+  if (length(FormAdmin.ListBoxFileSelect.Items[FormAdmin.ListBoxFileSelect.ItemIndex]) > 1) and IsTestValid(ExtractFilePath(Application.ExeName) + 'Tests/' + FormAdmin.ListBoxFileSelect.Items[FormAdmin.ListBoxFileSelect.ItemIndex] + '.txt') then
+  begin
     SetTitleTimeVisible;
     testName := FormAdmin.ListBoxFileSelect.Items[FormAdmin.ListBoxFileSelect.ItemIndex];
     FQuest := OpenTest(ExtractFilePath(Application.ExeName) + 'Tests/' + FormAdmin.ListBoxFileSelect.Items[FormAdmin.ListBoxFileSelect.ItemIndex] + '.txt');
